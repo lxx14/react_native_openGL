@@ -11,9 +11,9 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 40,
         marginTop: 30,
-        marginBottom: '50%',
     },
     button: {
+        marginTop: '50%',
         paddingTop: 10,
         paddingBottom: 10,
         paddingRight: 20,

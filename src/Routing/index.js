@@ -17,13 +17,28 @@ const TabNavigator = createBottomTabNavigator(
 const DrowerNavigator = createDrawerNavigator(
     {
         MainPage: TabNavigator,
-        InfoPage,
+        InfoPage: {
+            screen: InfoPage,
+            params: {
+                item: 'test'
+            }
+        }
     },
 );
 
 const WrapperMainApp = createStackNavigator(
     {
         DrowerNavigator
+    },
+    {
+        defaultNavigationOptions: ({ navigation }) => {
+            const route = navigation.state.routes.find(item => item.routeName === "InfoPage");
+            const changedItem = route.params.item;
+
+            return changedItem !== 'test' ?
+                { title: 'Title changed!' }:
+                { title: 'Test title' }
+        },
     }
 )
 
