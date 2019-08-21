@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faHandPeace } from '@fortawesome/free-solid-svg-icons';
 
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
-
-import { styles } from '../Auth/styles';
+import { TouchableWithoutFeedback, View, StyleSheet } from 'react-native';
 
 class InfoPage extends Component {
-
     constructor(props) {
         super(props);
     }
-
 
     render() {
         const { navigation } = this.props;
@@ -17,11 +15,19 @@ class InfoPage extends Component {
         return (
             <View style={styles.container}>
                 <TouchableWithoutFeedback onPress={() => navigation.setParams({ item: 'new Title' })}>
-                    <Text style={styles.button}>Change Title</Text>
+                    <FontAwesomeIcon icon={faHandPeace} size={50} />
                 </TouchableWithoutFeedback>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    }
+})
 
 export default InfoPage;

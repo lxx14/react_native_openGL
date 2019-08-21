@@ -8,10 +8,8 @@ import {
 import { styles } from './styles';
 
 const Auth = (props) => {
-
-    const { navigate } = props.navigation;
-
     goMainPage = () => {
+        const { navigate } = props.navigation;
         navigate('MainApp');
     }
 
