@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import { TouchableWithoutFeedback, Easing, Animated } from 'react-native';
 import { createAppContainer, createStackNavigator, createSwitchNavigator, createDrawerNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -12,7 +12,7 @@ import Page_2 from '../TabPages/Page_2';
 
 import DrawerMenu from './DrawerMenu';
 
-import {styles} from './styles';
+import { styles } from './styles';
 
 const TabNavigator = createBottomTabNavigator(
     {
@@ -65,6 +65,7 @@ const infoPageNavigator = createStackNavigator(
                 item: 'test'
             },
         },
+
     },
     {
         defaultNavigationOptions: ({ navigation }) => {
@@ -100,6 +101,29 @@ const AppWraper = createStackNavigator(
     },
     {
         headerMode: 'none',
+        transitionConfig: () => {
+            return {
+                transitionSpec: {
+                    duration: 500,
+                    easing: Easing.out(Easing.poly(4)),
+                    timing: Animated.timing,
+                    useNativeDriver: true,
+                },
+                screenInterpolator: sceneProps => {
+                    const { layout, position, scene } = sceneProps
+
+                    const thisSceneIndex = scene.index
+                    const width = layout.initWidth
+
+                    const translateX = position.interpolate({
+                        inputRange: [thisSceneIndex - 1, thisSceneIndex],
+                        outputRange: [width, 0],
+                    })
+
+                    return { transform: [{ translateX }] }
+                },
+            }
+        }
     }
 )
 
