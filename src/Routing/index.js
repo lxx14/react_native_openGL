@@ -2,7 +2,6 @@ import React from 'react';
 import { createAppContainer, createStackNavigator, createSwitchNavigator, createDrawerNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import Auth from '../Auth';
-import MainPage from '../MainPage';
 import InfoPage from '../InfoPage';
 import Page_1 from '../TabPages/Page_1';
 import Page_2 from '../TabPages/Page_2';
