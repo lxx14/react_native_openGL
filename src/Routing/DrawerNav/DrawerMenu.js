@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
 
-import { styles } from './styles';
+import { styles } from '../styles';
 
 const DrawerMenu = (props) => {
     const {navigation} = props;
@@ -17,7 +17,7 @@ const DrawerMenu = (props) => {
             <Text style={styles.title}>Hello Bro!</Text>
             <TouchableWithoutFeedback onPress={goInfo}>
                 <Text style={styles.button}>
-                    Go to info
+                    cool page:)
                 </Text>
             </TouchableWithoutFeedback>
         </View>
