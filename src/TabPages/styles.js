@@ -6,6 +6,10 @@ export const styles = StyleSheet.create(
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
+        },
+        counter: {
+            marginTop: 30,
+            fontSize: 50
         }
     }
 )

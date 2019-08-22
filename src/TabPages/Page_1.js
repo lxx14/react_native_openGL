@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { NavigationEvents } from 'react-navigation';
 
 import { Text, View } from 'react-native';
 
-import {styles} from './styles';
+import { styles } from './styles';
 
-export  const TabPage_1 = () => {
-    return (
-        <View style={styles.container}>
-            <Text>Tab page 1</Text>
-        </View>
-    )
+class TabPage_1 extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text>Tab page 1</Text>
+            </View>
+        )
+    }
 }
 
 export default TabPage_1;
