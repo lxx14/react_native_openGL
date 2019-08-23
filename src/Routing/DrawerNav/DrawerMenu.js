@@ -5,19 +5,37 @@ import { Text, View, TouchableWithoutFeedback } from 'react-native';
 import { styles } from '../styles';
 
 const DrawerMenu = (props) => {
-    const {navigation} = props;
+    const { navigation } = props;
 
-    const goInfo = () => {
-        navigation.navigate('InfoPage');
+    const goToContacts = () => {
+        navigation.navigate('Contacts');
+        navigation.closeDrawer();
+    }
+    const goToChats = () => {
+        navigation.navigate('Chats');
+        navigation.closeDrawer();
+    }
+    const goToOpenGL = () => {
+        navigation.navigate('OpenGL');
         navigation.closeDrawer();
     }
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Hello Bro!</Text>
-            <TouchableWithoutFeedback onPress={goInfo}>
-                <Text style={styles.button}>
-                    cool page:)
+            <Text>Menu</Text>
+            <TouchableWithoutFeedback onPress={goToContacts}>
+                <Text>
+                    Contacts
+                </Text>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={goToChats}>
+                <Text>
+                    Chats
+                </Text>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={goToOpenGL}>
+                <Text>
+                    Open GL
                 </Text>
             </TouchableWithoutFeedback>
         </View>

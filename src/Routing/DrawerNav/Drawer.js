@@ -10,7 +10,7 @@ const DrawerNavigator = createDrawerNavigator(
         WraperTabNav,
     },
     {
-        contentComponent: props => <DrawerMenu {...props} />,
+        contentComponent: props => <DrawerMenu {...props} />
     },
 );
 

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { NavigationEvents } from 'react-navigation';
 
 import { Text, View } from 'react-native';
 
 import { styles } from './styles';
 
-class TabPage_1 extends Component {
+class Chats extends Component {
     constructor(props) {
         super(props);
     }
@@ -13,10 +12,10 @@ class TabPage_1 extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Tab page 1</Text>
+                <Text>Chats</Text>
             </View>
         )
     }
 }
 
-export default TabPage_1;
+export default Chats;

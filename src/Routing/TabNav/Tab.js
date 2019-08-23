@@ -5,15 +5,17 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-import Page_1 from '../../TabPages/Page_1';
-import Page_2 from '../../TabPages/Page_2';
+import Contacts from '../../TabPages/Contacts';
+import Chats from '../../TabPages/Chats';
+import OpenGL from '../../TabPages/OpenGL';
 
 import { styles } from '../styles';
 
 const TabNavigator = createBottomTabNavigator(
     {
-        Page_1,
-        Page_2
+        Contacts,
+        Chats,
+        OpenGL
     },
     {
         tabBarOptions: {
@@ -47,7 +49,7 @@ const WrapperTabNav = createStackNavigator(
                     textAlign: "center",
                     paddingRight: 50
                 },
-                title: 'Main Flow Title'
+                title: ''
             }
         },
     }
