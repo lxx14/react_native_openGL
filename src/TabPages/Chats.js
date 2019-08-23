@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 import { Text, View } from 'react-native';
 
@@ -10,6 +11,7 @@ class Chats extends Component {
     }
 
     render() {
+        console.log(this.props.title);
         return (
             <View style={styles.container}>
                 <Text>Chats</Text>
@@ -18,4 +20,8 @@ class Chats extends Component {
     }
 }
 
-export default Chats;
+const mapStateToProps = (state) => ({
+    title: state.title,
+})
+
+export default connect(mapStateToProps)(Chats);
