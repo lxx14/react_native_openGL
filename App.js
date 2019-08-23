@@ -1,17 +1,14 @@
 import React from 'react';
 import { AppContainer } from './src/Routing';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import { applyMiddleware, createStore, compose } from 'redux';
-import logger from 'redux-logger'
-import { composeWithDevTools } from 'remote-redux-devtools';
+
+import { createStore } from 'redux';
+
 import rootReducer from './src/redux/RootReducer';
 
-const middleware = this.DEV ? [thunk, logger] : [thunk];
-
 const store = createStore(
-  rootReducer,
-  compose(composeWithDevTools(applyMiddleware(...middleware))));
+  rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 const App = () => {
   return (

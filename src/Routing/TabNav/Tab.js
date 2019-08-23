@@ -1,4 +1,5 @@
 import React from 'react';
+import {Text} from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
@@ -8,6 +9,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Contacts from '../../TabPages/Contacts';
 import Chats from '../../TabPages/Chats';
 import OpenGL from '../../TabPages/OpenGL';
+
+import TitleComponent from './Title';
 
 import { styles } from '../styles';
 
@@ -31,7 +34,8 @@ const WrapperTabNav = createStackNavigator(
         TabNavigator
     },
     {
-        defaultNavigationOptions: ({ navigation }) => {
+        defaultNavigationOptions: (props) => {
+            const { navigation } = props;
             const openDrower = () => {
                 navigation.toggleDrawer();
             }
@@ -49,10 +53,14 @@ const WrapperTabNav = createStackNavigator(
                     textAlign: "center",
                     paddingRight: 50
                 },
-                title: ''
+                headerTitle: <TitleComponent />
             }
         },
     }
 )
+
+const mapStateToProps = (state) => ({
+    title: state.title
+});
 
 export default WrapperTabNav;

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { NavigationEvents } from 'react-navigation';
 
 import { Text, View } from 'react-native';
+import { changeTitleActionType } from './actions';
 
 import { styles } from './styles';
 
@@ -11,9 +13,11 @@ class Chats extends Component {
     }
 
     render() {
-        console.log(this.props.title);
         return (
             <View style={styles.container}>
+                <NavigationEvents
+                    onDidFocus={() => this.props.title !== 'Chats' && this.props.changeTitleActionType('Chats')}
+                />
                 <Text>Chats</Text>
             </View>
         )
@@ -22,6 +26,10 @@ class Chats extends Component {
 
 const mapStateToProps = (state) => ({
     title: state.title,
-})
+});
 
-export default connect(mapStateToProps)(Chats);
+const mapDispatchToProps = {
+    changeTitleActionType
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chats);
