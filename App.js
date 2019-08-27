@@ -2,13 +2,7 @@ import React from 'react';
 import { AppContainer } from './src/Routing';
 import { Provider } from 'react-redux';
 
-import { createStore } from 'redux';
-
-import rootReducer from './src/redux/RootReducer';
-
-const store = createStore(
-  rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+import { store } from './src/redux/store';
 
 const App = () => {
   return (

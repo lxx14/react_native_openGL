@@ -8,8 +8,9 @@ import { styles } from './styles';
 
 const SplashScreen = (props) => {
 
-    React.useEffect(()=>{
-        setTimeout(goMainPage, 4000);
+    React.useEffect(() => {
+        setTimeout(
+            goMainPage, 3000);
     }, []);
 
     goMainPage = () => {
