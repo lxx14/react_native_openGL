@@ -9,5 +9,3 @@ const middleware = this.__DEV__ ? [thunk, logger] : [thunk];
 const store = createStore(rootReducer, compose(composeWithDevTools(applyMiddleware(...middleware))));
 
 export default store;
-
-

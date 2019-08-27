@@ -5,7 +5,7 @@ import { NavigationEvents } from 'react-navigation';
 import { Text, View } from 'react-native';
 import { changeTitleActionType } from '../actions';
 
-import { styles } from '../styles';
+import { styles } from './styles';
 
 class OpenGL extends Component {
     constructor(props) {

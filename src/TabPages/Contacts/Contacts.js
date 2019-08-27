@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavigationEvents } from 'react-navigation';
-
 import { Text, View } from 'react-native';
 import { changeTitleActionType } from '../actions';
 
-import { styles } from '../styles';
+import User from '../Components/User/User';
+
+import { styles } from './styles';
 
 class Contacts extends Component {
     constructor(props) {
@@ -13,19 +14,28 @@ class Contacts extends Component {
     }
 
     render() {
+        const { title, users, changeTitleActionType } = this.props;
         return (
             <View style={styles.container}>
                 <NavigationEvents
-                    onDidFocus={() => this.props.title !== 'Contacts' && this.props.changeTitleActionType('Contacts')}
+                    onDidFocus={() => title !== 'Contacts' && changeTitleActionType('Contacts')}
                 />
-                <Text>Contacts</Text>
+                {users.map(item =>
+                    <User
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        user={item}
+                        {... this.props}
+                    />)}
             </View>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    title: state.title,
+    title: state.title.name,
+    users: state.users
 });
 
 const mapDispatchToProps = {

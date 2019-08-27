@@ -14,5 +14,21 @@ export const users = [
                 recieved: true
             }
         ]
+    },
+    {
+        name: 'Petya',
+        id: 2,
+        messages: [
+            {
+                id: 21,
+                text: 'Have a nice day!',
+                recieved: false
+            },
+            {
+                id: 22,
+                text: 'thanks',
+                recieved: true
+            }
+        ]
     }
 ]

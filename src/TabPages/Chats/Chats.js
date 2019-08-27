@@ -5,7 +5,9 @@ import { NavigationEvents } from 'react-navigation';
 import { Text, View } from 'react-native';
 import { changeTitleActionType } from '../actions';
 
-import { styles } from '../styles';
+import User from '../Components/User/User';
+
+import { styles } from './styles';
 
 class Chats extends Component {
     constructor(props) {
@@ -13,19 +15,29 @@ class Chats extends Component {
     }
 
     render() {
+        const { title, users, changeTitleActionType } = this.props;
+
         return (
             <View style={styles.container}>
                 <NavigationEvents
-                    onDidFocus={() => this.props.title !== 'Chats' && this.props.changeTitleActionType('Chats')}
+                    onDidFocus={() => title !== 'Chats' && changeTitleActionType('Chats')}
                 />
-                <Text>Chats</Text>
+                {users.map(item =>
+                    <User
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        user={item}
+                        {... this.props}
+                    />)}
             </View>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    title: state.title,
+    title: state.title.name,
+    users: state.users
 });
 
 const mapDispatchToProps = {

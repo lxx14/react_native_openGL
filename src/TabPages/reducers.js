@@ -1,12 +1,24 @@
-import { CHANGE_TITLE } from './actions'
+import { CHANGE_TITLE, CHANGE_ICON } from './actions'
 
-const initialState = 'default title';
+const initialState = {
+    name: 'default title',
+    showArrow: false
+}
 
 export default function (state = initialState, action) {
     const { type, data } = action;
     switch (type) {
         case CHANGE_TITLE:
-            return data
+            return {
+                ...state,
+                name: data
+            };
+        case CHANGE_ICON:
+            console.log(data)
+            return {
+                ...state,
+                showArrow: data
+            };
         default: return state;
     }
 };

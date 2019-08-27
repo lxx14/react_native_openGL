@@ -2,21 +2,28 @@ import React from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-
 import Contacts from '../../TabPages/Contacts/Contacts';
 import Chats from '../../TabPages/Chats/Chats';
+import Dialog from '../../TabPages/Components/Dialog/Dialog';
 import OpenGL from '../../TabPages/OpenGL/OpenGL';
 
 import TitleComponent from './Title';
 
-import { styles } from '../styles';
+
+const ChatsNavigator = createStackNavigator(
+    {
+        Chats,
+        Dialog
+    },
+    {
+        headerMode: 'none',
+    }
+)
 
 const TabNavigator = createBottomTabNavigator(
     {
         Contacts,
-        Chats,
+        ChatsNavigator,
         OpenGL
     },
     {
@@ -34,16 +41,8 @@ const WrapperTabNav = createStackNavigator(
     },
     {
         defaultNavigationOptions: (props) => {
-            const { navigation } = props;
-            const openDrower = () => {
-                navigation.toggleDrawer();
-            }
+
             return {
-                headerLeft: (
-                    <TouchableWithoutFeedback onPress={openDrower}>
-                        <FontAwesomeIcon icon={faBars} size={30} style={styles.icon} />
-                    </TouchableWithoutFeedback>
-                ),
                 headerTitleStyle: {
                     flex: 1,
                     flexDirection: 'row',
@@ -52,7 +51,7 @@ const WrapperTabNav = createStackNavigator(
                     textAlign: "center",
                     paddingRight: 50
                 },
-                headerTitle: <TitleComponent />
+                headerTitle: <TitleComponent {...props} />
             }
         },
     }
