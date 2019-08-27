@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { NavigationEvents } from 'react-navigation';
 
 import { Text, View } from 'react-native';
-import { changeTitleActionType } from './actions';
+import { changeTitleActionType } from '../actions';
 
-import { styles } from './styles';
+import { styles } from '../styles';
 
-class Contacts extends Component {
+class OpenGL extends Component {
     constructor(props) {
         super(props);
     }
@@ -16,9 +16,9 @@ class Contacts extends Component {
         return (
             <View style={styles.container}>
                 <NavigationEvents
-                    onDidFocus={() => this.props.title !== 'Contacts' && this.props.changeTitleActionType('Contacts')}
+                    onDidFocus={() => this.props.title !== 'OpenGL' && this.props.changeTitleActionType('OpenGL')}
                 />
-                <Text>Contacts</Text>
+                <Text>OpenGL</Text>
             </View>
         )
     }
@@ -32,4 +32,4 @@ const mapDispatchToProps = {
     changeTitleActionType
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
+export default connect(mapStateToProps, mapDispatchToProps)(OpenGL);

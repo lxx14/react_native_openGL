@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { NavigationEvents } from 'react-navigation';
 
 import { Text, View } from 'react-native';
-import { changeTitleActionType } from './actions';
+import { changeTitleActionType } from '../actions';
 
-import { styles } from './styles';
+import { styles } from '../styles';
 
-class Chats extends Component {
+class Contacts extends Component {
     constructor(props) {
         super(props);
     }
@@ -16,9 +16,9 @@ class Chats extends Component {
         return (
             <View style={styles.container}>
                 <NavigationEvents
-                    onDidFocus={() => this.props.title !== 'Chats' && this.props.changeTitleActionType('Chats')}
+                    onDidFocus={() => this.props.title !== 'Contacts' && this.props.changeTitleActionType('Contacts')}
                 />
-                <Text>Chats</Text>
+                <Text>Contacts</Text>
             </View>
         )
     }
@@ -32,4 +32,4 @@ const mapDispatchToProps = {
     changeTitleActionType
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chats);
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);

@@ -1,14 +1,13 @@
 import React from 'react';
-import {Text} from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-import Contacts from '../../TabPages/Contacts';
-import Chats from '../../TabPages/Chats';
-import OpenGL from '../../TabPages/OpenGL';
+import Contacts from '../../TabPages/Contacts/Contacts';
+import Chats from '../../TabPages/Chats/Chats';
+import OpenGL from '../../TabPages/OpenGL/OpenGL';
 
 import TitleComponent from './Title';
 
@@ -58,9 +57,5 @@ const WrapperTabNav = createStackNavigator(
         },
     }
 )
-
-const mapStateToProps = (state) => ({
-    title: state.title
-});
 
 export default WrapperTabNav;
