@@ -1,43 +1,23 @@
 import React from 'react';
+import { Text, View } from 'react-native';
 
-import { Text, View, TouchableWithoutFeedback } from 'react-native';
-
+import DrawerItem from './DrawerItem';
 import { styles } from '../styles';
 
 const DrawerMenu = (props) => {
     const { navigation } = props;
 
-    const goToContacts = () => {
-        navigation.navigate('Contacts');
-        navigation.closeDrawer();
-    }
-    const goToChats = () => {
-        navigation.navigate('Chats');
-        navigation.closeDrawer();
-    }
-    const goToOpenGL = () => {
-        navigation.navigate('OpenGL');
+    const handleRouting = (route) => {
+        navigation.navigate(route);
         navigation.closeDrawer();
     }
 
     return (
         <View style={styles.container}>
             <Text>Menu</Text>
-            <TouchableWithoutFeedback onPress={goToContacts}>
-                <Text>
-                    Contacts
-                </Text>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={goToChats}>
-                <Text>
-                    Chats
-                </Text>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={goToOpenGL}>
-                <Text>
-                    Open GL
-                </Text>
-            </TouchableWithoutFeedback>
+            <DrawerItem text='Contacts' tabName={'Contacts'} goToRoute={handleRouting} />
+            <DrawerItem text='Chats' tabName={'Chats'} goToRoute={handleRouting} />
+            <DrawerItem text='Open GL' tabName={'OpenGL'} goToRoute={handleRouting} />
         </View>
     )
 };

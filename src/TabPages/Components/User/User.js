@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, Image, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
-import { changeTitleActionType, changeIconActionType } from '../../actions';
 
+import { changeTitleActionType, changeIconActionType } from '../../actions';
 import { styles } from './styles';
 
 class User extends Component {
@@ -11,13 +11,13 @@ class User extends Component {
     }
 
     goToChat = () => {
-        const { user, navigation, changeTitleActionType, changeIconActionType } = this.props;
-        changeTitleActionType(`${user.name}`);
+        const { user: { id, messages, name }, navigation, changeTitleActionType, changeIconActionType } = this.props;
+        changeTitleActionType(`${name}`);
         changeIconActionType(true);
         navigation.navigate("Dialog",
             {
-                itemId: user.id,
-                messages: user.messages
+                itemId: id,
+                messages: messages
             }
         )
     }

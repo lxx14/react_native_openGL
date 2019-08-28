@@ -30,5 +30,21 @@ export const users = [
                 recieved: true
             }
         ]
+    },
+    {
+        name: 'Kolya',
+        id: 3,
+        messages: [
+            {
+                id: 31,
+                text: 'YO!',
+                recieved: false
+            },
+            {
+                id: 32,
+                text: 'HI!',
+                recieved: true
+            }
+        ]
     }
 ]

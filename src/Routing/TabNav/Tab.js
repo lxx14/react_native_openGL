@@ -1,12 +1,10 @@
 import React from 'react';
-import { TouchableWithoutFeedback } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import Contacts from '../../TabPages/Contacts/Contacts';
 import Chats from '../../TabPages/Chats/Chats';
 import Dialog from '../../TabPages/Components/Dialog/Dialog';
 import OpenGL from '../../TabPages/OpenGL/OpenGL';
-
 import TitleComponent from './Title';
 
 
@@ -48,8 +46,7 @@ const WrapperTabNav = createStackNavigator(
                     flexDirection: 'row',
                     justifyContent: "center",
                     alignItems: "center",
-                    textAlign: "center",
-                    paddingRight: 50
+                    textAlign: "center"
                 },
                 headerTitle: <TitleComponent {...props} />
             }

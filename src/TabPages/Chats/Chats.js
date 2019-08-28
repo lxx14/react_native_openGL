@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavigationEvents } from 'react-navigation';
+import { ScrollView } from 'react-native';
 
-import { Text, View } from 'react-native';
 import { changeTitleActionType } from '../actions';
-
 import User from '../Components/User/User';
-
 import { styles } from './styles';
 
 class Chats extends Component {
@@ -17,20 +15,22 @@ class Chats extends Component {
     render() {
         const { title, users, changeTitleActionType } = this.props;
 
+        const UsersList = users.map(item =>
+            <User
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                user={item}
+                {... this.props}
+            />);
+
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <NavigationEvents
                     onDidFocus={() => title !== 'Chats' && changeTitleActionType('Chats')}
                 />
-                {users.map(item =>
-                    <User
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        user={item}
-                        {... this.props}
-                    />)}
-            </View>
+                {UsersList}
+            </ScrollView>
         )
     }
 }

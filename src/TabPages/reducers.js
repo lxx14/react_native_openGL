@@ -14,7 +14,6 @@ export default function (state = initialState, action) {
                 name: data
             };
         case CHANGE_ICON:
-            console.log(data)
             return {
                 ...state,
                 showArrow: data

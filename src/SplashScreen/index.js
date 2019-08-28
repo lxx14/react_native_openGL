@@ -1,28 +1,27 @@
-import React from 'react';
-import {
-    View,
-    Image
-} from 'react-native';
+import React, { Component } from 'react';
+import { View, Image } from 'react-native';
 
 import { styles } from './styles';
 
-const SplashScreen = (props) => {
+class SplashScreen extends Component {
 
-    React.useEffect(() => {
+    componentDidMount() {
         setTimeout(
-            goMainPage, 3000);
-    }, []);
-
-    goMainPage = () => {
-        const { navigate } = props.navigation;
-        navigate('MainApp');
+            this.goMainPage, 2500
+        );
     }
 
-    return (
-        <View style={styles.container}>
-            <Image source={require('../assets/images/splash_logo.png')} />
-        </View>
-    )
+    goMainPage = () => {
+        const { navigate } = this.props.navigation;
+        navigate('MainApp');
+    }
+    render() {
+        return (
+            <View style={styles.container}>
+                <Image source={require('../assets/images/splash_logo.png')} />
+            </View>
+        )
+    }
 }
 
 export default SplashScreen;

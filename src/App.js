@@ -1,10 +1,11 @@
 import React from 'react';
-import { AppContainer } from './src/Routing';
+import { AppContainer } from './Routing';
 import { Provider } from 'react-redux';
 
-import  store  from './src/redux/store';
+import  store  from './redux/store';
 
 const App = () => {
+
   return (
     <Provider store={store}>
       <AppContainer />
