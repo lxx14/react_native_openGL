@@ -24,17 +24,17 @@ const TitleComponent = (props) => {
 
         return (index !== 1 || arrow === false) ?
             <TouchableWithoutFeedback onPress={openDrower}>
-                <FontAwesomeIcon icon={faBars} size={30} />
+                <FontAwesomeIcon icon={faBars} size={30} color={'#0099ff'}/>
             </TouchableWithoutFeedback> :
             <TouchableWithoutFeedback onPress={goBack}>
-                <FontAwesomeIcon icon={faArrowLeft} size={30} />
+                <FontAwesomeIcon icon={faArrowLeft} size={30} color={'#0099ff'}/>
             </TouchableWithoutFeedback>
     }
 
     return (
         <View style={styles.container}>
             {changeRoute()}
-            <Text>{title}</Text>
+            <Text style={styles.title}>{title}</Text>
         </View>
     )
 }

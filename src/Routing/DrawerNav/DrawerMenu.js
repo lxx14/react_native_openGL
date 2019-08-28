@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
+
 
 import DrawerItem from './DrawerItem';
-import { styles } from '../styles';
+import { styles } from './styles';
 
 const DrawerMenu = (props) => {
     const { navigation } = props;
@@ -14,10 +15,16 @@ const DrawerMenu = (props) => {
 
     return (
         <View style={styles.container}>
-            <Text>Menu</Text>
-            <DrawerItem text='Contacts' tabName={'Contacts'} goToRoute={handleRouting} />
-            <DrawerItem text='Chats' tabName={'Chats'} goToRoute={handleRouting} />
-            <DrawerItem text='Open GL' tabName={'OpenGL'} goToRoute={handleRouting} />
+            <View style={styles.headerContainer}>
+                <Image source={require('../../assets/images/owner.png')} style={styles.image} />
+                <Text style={styles.headerText}>Dart Veider</Text>
+                <Text style={styles.headerNumber}>+7 ( 777 ) 777-77-77</Text>
+            </View>
+            <View style={styles.menuItemsContainer}>
+                <DrawerItem text='Contacts' tabName={'Contacts'} goToRoute={handleRouting} icon={'Contacts'} />
+                <DrawerItem text='Chats' tabName={'Chats'} goToRoute={handleRouting} icon={'Chats'} />
+                <DrawerItem text='Open GL' tabName={'OpenGL'} goToRoute={handleRouting} icon={'OpenGL'} />
+            </View>
         </View>
     )
 };

@@ -1,8 +1,12 @@
 import React from 'react';
-import { Text, TouchableWithoutFeedback } from 'react-native';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faComments, faUser, faAdjust } from '@fortawesome/free-solid-svg-icons';
+
+import { styles } from './styles';
 
 const DrawerItem = (props) => {
-    const { text, goToRoute, tabName } = props;
+    const { text, goToRoute, tabName, icon } = props;
 
     const onPress = () => {
         goToRoute(tabName);
@@ -10,9 +14,15 @@ const DrawerItem = (props) => {
 
     return (
         <TouchableWithoutFeedback onPress={onPress}>
-            <Text>
-                {text}
-            </Text>
+            <View style={styles.itemContainer}>
+                <FontAwesomeIcon
+                    icon={icon === 'Contacts' ? faUser : icon === 'Chats' ? faComments : faAdjust}
+                    size={20}
+                    color={'#d9d9d9'}
+                    style={styles.drawerIcon}
+                />
+                <Text>{text}</Text>
+            </View>
         </TouchableWithoutFeedback>
     )
 }

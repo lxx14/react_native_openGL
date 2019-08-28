@@ -1,5 +1,7 @@
 import React from 'react';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faComments, faUser, faAdjust } from '@fortawesome/free-solid-svg-icons';
 
 import Contacts from '../../TabPages/Contacts/Contacts';
 import Chats from '../../TabPages/Chats/Chats';
@@ -21,13 +23,27 @@ const ChatsNavigator = createStackNavigator(
 const TabNavigator = createBottomTabNavigator(
     {
         Contacts,
-        ChatsNavigator,
+        Chats: ChatsNavigator,
         OpenGL
     },
     {
+        defaultNavigationOptions: ({ navigation }) => ({
+            tabBarIcon: ({ focused }) => {
+                const { routeName } = navigation.state;
+                if (routeName === 'Contacts') {
+                    return <FontAwesomeIcon icon={faUser} size={20} color={focused ? '#0099ff' : 'grey'} />
+                }
+                if (routeName === 'Chats') {
+                    return <FontAwesomeIcon icon={faComments} size={20} color={focused ? '#0099ff' : 'grey'} />
+                }
+                if (routeName === 'OpenGL') {
+                    return <FontAwesomeIcon icon={faAdjust} size={20} color={focused ? '#0099ff' : 'grey'} />
+                }
+            }
+        }),
         tabBarOptions: {
             style: {
-                paddingBottom: 15,
+                paddingBottom: 2,
             }
         }
     }
@@ -41,16 +57,13 @@ const WrapperTabNav = createStackNavigator(
         defaultNavigationOptions: (props) => {
 
             return {
-                headerTitleStyle: {
-                    flex: 1,
-                    flexDirection: 'row',
-                    justifyContent: "center",
-                    alignItems: "center",
-                    textAlign: "center"
+                headerTitle: <TitleComponent {...props} />,
+                headerStyle: {
+                    backgroundColor: '#e6e6e6',
                 },
-                headerTitle: <TitleComponent {...props} />
             }
         },
+
     }
 )
 

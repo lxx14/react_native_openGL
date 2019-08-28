@@ -29,7 +29,7 @@ class User extends Component {
                 <View style={styles.container}>
                     <Image
                         style={styles.image}
-                        source={require('../../../assets/images/user-logo.png')}
+                        source={require('../../../assets/images/user_logo.png')}
                     />
                     <Text>{name}</Text>
                 </View>
