@@ -7,8 +7,7 @@ import DrawerMenu from './DrawerMenu';
 const DrawerNavigator = createDrawerNavigator(
     {
         WraperTabNav,
-    },
-    {
+    },{
         contentComponent: props => <DrawerMenu {...props} />
     },
 );

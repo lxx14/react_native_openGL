@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableWithoutFeedback, Keyboard, ScrollView }
 import { connect } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faSmile } from '@fortawesome/free-solid-svg-icons';
 
 import { addMessageActionType } from '../../../redux/actions';
 import { styles } from './styles';
@@ -31,6 +31,7 @@ class Dialog extends Component {
             userId,
             message: {
                 id: newId,
+                date: 'now',
                 text,
                 recieved: true
             }
@@ -38,6 +39,10 @@ class Dialog extends Component {
         addMessageActionType(newMessage);
         this.setState({ text: '' });
         Keyboard.dismiss()
+    }
+
+    smileHandler = () => {
+        alert('not supported... yet :)')
     }
 
     render() {
@@ -48,16 +53,22 @@ class Dialog extends Component {
             <View style={styles.mainContainer}>
                 <ScrollView style={styles.textContainer}>
                     {messages.map(item =>
-                        <Text key={item.id} style={[styles.textLeft, item.recieved && styles.textRight]}>
-                            {item.text}
-                        </Text>
+                        <View key={item.id} style={styles.wrapperMessage}>
+                            <Text style={[styles.textLeft, item.recieved && styles.textRight]}>
+                                {item.text}
+                            </Text>
+                            <View style={[styles.triangleLeft, item.recieved && styles.triangleRight]} />
+                        </View>
                     )}
                 </ScrollView>
                 <View>
-                    <TextInput value={text} onChangeText={this.handleText} style={styles.input} />
+                    <TextInput value={text} onChangeText={this.handleText} style={styles.input} placeholder='message'/>
                     {text.length > 0 && <TouchableWithoutFeedback onPress={this.addMessage}>
                         <FontAwesomeIcon icon={faPaperPlane} size={25} style={styles.icon} />
                     </TouchableWithoutFeedback>}
+                    <TouchableWithoutFeedback onPress={this.smileHandler}>
+                        <FontAwesomeIcon icon={faSmile} size={25} style={styles.iconSmile} />
+                    </TouchableWithoutFeedback>
                 </View>
             </View>
         )

@@ -11,8 +11,8 @@ class User extends Component {
     }
 
     goToChat = () => {
-        const { user: { id, messages, name }, navigation, changeTitleActionType, changeIconActionType } = this.props;
-        changeTitleActionType(`${name}`);
+        const { user: { id, messages, name }, date, navigation, changeTitleActionType, changeIconActionType } = this.props;
+        changeTitleActionType(name);
         changeIconActionType(true);
         navigation.navigate("Dialog",
             {
@@ -23,23 +23,30 @@ class User extends Component {
     }
 
     render() {
-        const { name } = this.props;
+        const { name, online, chats, messages } = this.props;
         return (
             <TouchableWithoutFeedback onPress={this.goToChat}>
-                <View style={styles.container}>
+                <View style={!chats ? styles.container : styles.containerChats}>
                     <Image
-                        style={styles.image}
+                        style={!chats ? styles.image : styles.imageChats}
                         source={require('../../../assets/images/user_logo.png')}
                     />
-                    <Text>{name}</Text>
+                    <View style={styles.textContainer}>
+                        <Text style={!chats ? styles.text : styles.textChat}>{name}</Text>
+                        {online && <Text style={online === 'online' ? styles.onlineTextActive : styles.onlineText}>{online}</Text>}
+                        {chats && <Text style={styles.messagePreview}>{messages[messages.length - 1].text}</Text>}
+                        {chats && <Text style={styles.textDate}>{messages[messages.length - 1].date}</Text>}
+                    </View>
                 </View>
             </TouchableWithoutFeedback>
         )
     }
 }
+
 const mapStateToProps = (state) => ({
     arrow: state.title.showArrow
 })
+
 const mapDispatchToProps = {
     changeTitleActionType,
     changeIconActionType

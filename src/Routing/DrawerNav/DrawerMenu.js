@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
+import { faComments, faUser, faAdjust } from '@fortawesome/free-solid-svg-icons';
 
 
 import DrawerItem from './DrawerItem';
@@ -21,9 +22,9 @@ const DrawerMenu = (props) => {
                 <Text style={styles.headerNumber}>+7 ( 777 ) 777-77-77</Text>
             </View>
             <View style={styles.menuItemsContainer}>
-                <DrawerItem text='Contacts' tabName={'Contacts'} goToRoute={handleRouting} icon={'Contacts'} />
-                <DrawerItem text='Chats' tabName={'Chats'} goToRoute={handleRouting} icon={'Chats'} />
-                <DrawerItem text='Open GL' tabName={'OpenGL'} goToRoute={handleRouting} icon={'OpenGL'} />
+                <DrawerItem text='Contacts' tabName='Contacts' goToRoute={handleRouting} icon={faUser} />
+                <DrawerItem text='Chats' tabName='Chats' goToRoute={handleRouting} icon={faComments} />
+                <DrawerItem text='Open GL' tabName='OpenGL' goToRoute={handleRouting} icon={faAdjust} />
             </View>
         </View>
     )

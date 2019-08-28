@@ -21,6 +21,7 @@ class Contacts extends Component {
                 id={item.id}
                 name={item.name}
                 user={item}
+                online={item.online}
                 {... this.props}
             />);
 

@@ -22,6 +22,8 @@ class Chats extends Component {
                 name={item.name}
                 user={item}
                 {... this.props}
+                chats={true}
+                messages={item.messages}
             />);
 
         return (
