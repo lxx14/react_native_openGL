@@ -24,17 +24,24 @@ const TitleComponent = (props) => {
 
         return (index !== 1 || arrow === false) ?
             <TouchableWithoutFeedback onPress={openDrower}>
-                <FontAwesomeIcon icon={faBars} size={30} color={'#0099ff'}/>
+                <FontAwesomeIcon icon={faBars} size={30} color={'#0099ff'} />
             </TouchableWithoutFeedback> :
             <TouchableWithoutFeedback onPress={goBack}>
-                <FontAwesomeIcon icon={faArrowLeft} size={30} color={'#0099ff'}/>
+                <FontAwesomeIcon icon={faArrowLeft} size={30} color={'#0099ff'} />
             </TouchableWithoutFeedback>
+    }
+
+    const changeRouteName = () => {
+        return index === 0 ?
+            <Text style={styles.title}>Contacts</Text> :
+            index === 1 ? <Text style={styles.title}>Chats</Text> :
+                <Text style={styles.title}>Open GL</Text>
     }
 
     return (
         <View style={styles.container}>
             {changeRoute()}
-            <Text style={styles.title}>{title}</Text>
+            {changeRouteName()}
         </View>
     )
 }

@@ -30,14 +30,15 @@ const TabNavigator = createBottomTabNavigator(
         defaultNavigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused }) => {
                 const { routeName } = navigation.state;
-                if (routeName === 'Contacts') {
-                    return <FontAwesomeIcon icon={faUser} size={20} color={focused ? '#0099ff' : 'grey'} />
-                }
-                if (routeName === 'Chats') {
-                    return <FontAwesomeIcon icon={faComments} size={20} color={focused ? '#0099ff' : 'grey'} />
-                }
-                if (routeName === 'OpenGL') {
-                    return <FontAwesomeIcon icon={faAdjust} size={20} color={focused ? '#0099ff' : 'grey'} />
+
+                switch (routeName) {
+                    case 'Contacts':
+                        return <FontAwesomeIcon icon={faUser} size={20} color={focused ? '#0099ff' : 'grey'} />;
+                    case 'Chats':
+                        return <FontAwesomeIcon icon={faComments} size={20} color={focused ? '#0099ff' : 'grey'} />;
+                    case 'OpenGL':
+                        return <FontAwesomeIcon icon={faAdjust} size={20} color={focused ? '#0099ff' : 'grey'} />
+                    default: return 'not found';
                 }
             }
         }),

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavigationEvents } from 'react-navigation';
 import { ScrollView } from 'react-native';
 
-import { changeTitleActionType } from '../actions';
-import User from '../Components/User/User';
+import { getUser } from '../../utils/getUser';
 import { styles } from './styles';
 
 class Chats extends Component {
@@ -13,24 +11,13 @@ class Chats extends Component {
     }
 
     render() {
-        const { title, users, changeTitleActionType } = this.props;
+        console.log(this.props);
+        const { users } = this.props;
 
-        const UsersList = users.map(item =>
-            <User
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                user={item}
-                {... this.props}
-                chats={true}
-                messages={item.messages}
-            />);
+        const UsersList = getUser(users, 'chats', this.props);
 
         return (
             <ScrollView style={styles.container}>
-                <NavigationEvents
-                    onDidFocus={() => title !== 'Chats' && changeTitleActionType('Chats')}
-                />
                 {UsersList}
             </ScrollView>
         )
@@ -38,12 +25,7 @@ class Chats extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    title: state.title.name,
     users: state.users
 });
 
-const mapDispatchToProps = {
-    changeTitleActionType
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Chats);
+export default connect(mapStateToProps)(Chats);

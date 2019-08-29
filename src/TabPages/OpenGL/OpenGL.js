@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavigationEvents } from 'react-navigation';
 import { Text, View } from 'react-native';
 
-import { changeTitleActionType } from '../actions';
 import { styles } from './styles';
 
 class OpenGL extends Component {
@@ -12,12 +10,9 @@ class OpenGL extends Component {
     }
 
     render() {
-        const { title } = this.props;
+
         return (
             <View style={styles.container}>
-                <NavigationEvents
-                    onDidFocus={() => title !== 'OpenGL' && this.props.changeTitleActionType('OpenGL')}
-                />
                 <Text>OpenGL</Text>
             </View>
         )
@@ -25,11 +20,7 @@ class OpenGL extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    title: state.title,
+    //..............
 });
 
-const mapDispatchToProps = {
-    changeTitleActionType
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(OpenGL);
+export default connect(mapStateToProps)(OpenGL);
