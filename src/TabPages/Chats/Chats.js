@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 
-import { getUser } from '../../utils/getUser';
+import SwipebleUsers from '../Components/User/Components/SwipableUsers';
 import { styles } from './styles';
 
 class Chats extends Component {
@@ -11,14 +11,11 @@ class Chats extends Component {
     }
 
     render() {
-        console.log(this.props);
         const { users } = this.props;
-
-        const UsersList = getUser(users, 'chats', this.props);
 
         return (
             <ScrollView style={styles.container}>
-                {UsersList}
+                <SwipebleUsers users={users} {...this.props} />
             </ScrollView>
         )
     }

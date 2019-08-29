@@ -13,11 +13,13 @@ export const styles = StyleSheet.create(
         containerChats: {
             display: 'flex',
             flexDirection: 'row',
+            alignItems: 'center',
             width: '100%',
             height: 80,
             paddingLeft: 5,
-            paddingTop: 15,
             overflow: 'hidden',
+            borderBottomColor: '#e6e6e6',
+            borderBottomWidth: 1,
         },
         image: {
             width: 40,
@@ -29,8 +31,6 @@ export const styles = StyleSheet.create(
         },
         textContainer: {
             flex: 1,
-            borderBottomColor: '#e6e6e6',
-            borderBottomWidth: 1,
             marginLeft: 10,
             position: 'relative',
         },
