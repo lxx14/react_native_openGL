@@ -10,12 +10,8 @@ exports[`SplashScreen create snapshot SplashScreen 1`] = `
     }
   }
 >
-  <Image
-    source={
-      Object {
-        "testUri": "../../../src/assets/images/splash_logo.png",
-      }
-    }
-  />
+  <Text>
+    Open GL
+  </Text>
 </View>
 `;

@@ -1,13 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import OpenGL from '../../src/TabPages/OpenGL/OpenGL';
+import SplashScreen from '../../src/SplashScreen';
+import renderer from 'react-test-renderer';
 
-describe('OpenGL', () => {
-
-    it('create snapshot OpenGL', () => {
-
-        const component = shallow(<OpenGL />);
-
-        expect(component).toMatchSnapshot();
+describe('SplashScreen', () => {
+    it('create snapshot SplashScreen', () => {
+        const snapshot = renderer.create(<SplashScreen />);
+        expect(snapshot).toMatchSnapshot();
     });
-});
+})
