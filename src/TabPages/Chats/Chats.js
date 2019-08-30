@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native';
 import SwipebleUsers from '../Components/User/Components/SwipableUsers';
 import { styles } from './styles';
 
-class Chats extends Component {
+export class Chats extends Component {
     constructor(props) {
         super(props);
     }

@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { getUser } from '../../utils/getUser';
 import { styles } from './styles';
 
-class Contacts extends Component {
+export class Contacts extends Component {
     constructor(props) {
         super(props);
     }
